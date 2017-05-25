@@ -52,16 +52,19 @@
                     <a href="#"><i class="glyphicon glyphicon-king"></i> Admin Page<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="userManage.do">Manage User</a>
+                            <a href="userManage.do"><i class="glyphicon glyphicon-user"></i> Manage User</a>
                         </li>
                         <li>
-                            <a href="auctionManage.do">Manage Auction</a>
+                            <a href="auctionManage.do"><i class="glyphicon glyphicon-list-alt"></i> Manage Auction</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
                 <li>
                     <a href="auctionList.do"><i class="fa fa-th-list fa-fw"></i> Auction List</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-key fa-fw"></i> Registration of Item</a>
                 </li>
             </ul>
         </div>
