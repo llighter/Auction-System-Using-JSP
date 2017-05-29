@@ -17,6 +17,7 @@ public class UserListCommand implements TemplateCommand {
 		UserDAO dao = new UserDAO();
 		
 		ArrayList<UserDTO> list = dao.getAll();
+		request.setAttribute("path", request.getSession().getServletContext().getRealPath("/"));
 		System.out.println("[UserList]length: "+ list.size());
 		
 		request.setAttribute("list", list);

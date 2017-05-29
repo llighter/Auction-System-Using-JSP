@@ -64,7 +64,7 @@
                     <a href="auctionList.do"><i class="fa fa-th-list fa-fw"></i> Auction List</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-key fa-fw"></i> Registration of Item</a>
+                    <a href="auctionItemInsertForm.do"><i class="fa fa-key fa-fw"></i> Registration of Item</a>
                 </li>
             </ul>
         </div>

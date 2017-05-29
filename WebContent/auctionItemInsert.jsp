@@ -1,15 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="utf-8"
     import = "java.util.*"
+    import = "java.text.*"
     %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <% request.setCharacterEncoding("UTF-8"); %>
+<%
+	java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	String today = formatter.format(new java.util.Date());
+	System.out.println("[>>>]"+today);
+%>
 <!DOCTYPE html>
 <html lang="ko">
 
 <jsp:include page="head.jsp"></jsp:include>
 
 <body>
+	<script>
+		function test() {
+			alert("[test]"+document.getElementById("end_date").value);
+		}
+	</script>
     <div id="wrapper">
 
         <jsp:include page="navigation.jsp"></jsp:include>
@@ -22,19 +33,28 @@
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
-            <form role="form">
+            <form role="form" name="form01" method="POST" action="auctionItemInsert.do" enctype="multipart/form-data">
 	            <div class="form-group has-success">
 	                <label class="control-label" for="inputSuccess">Item Name</label>
-	                <input type="text" class="form-control" id="inputSuccess">
+	                <input type="text" class="form-control" name="item_name">
 	            </div>
 	            <div class="form-group has-success">
 	                <label class="control-label" for="current_bid_amount">Start Bid Amount</label>
-	                <input type="text" class="form-control" id="current_bid_amount">
+	                <input type="text" class="form-control" name="current_bid_amount">
 	            </div>
-				<div>
+				<div class="form-group">
 					<label for="end_date">Choose your End date</label><br>
 					<input type="date" id="end_date" name="end_date" min="2017-04-01" max="2017-04-20" required>
+					<input type="button" id="dateTest" onclick="test()" value="show date">
 				</div>
+				<div class="form-group">
+                    <label>Image Upload</label>
+                    <input type="file" name="upload_image" id="upload_image">
+                </div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-success">Insert</button>
+				</div>
+				
 	        </form>
         </div>
         <!-- /#page-wrapper -->

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.action.TemplateCommand;
 import com.action.item.AuctionItemDeleteCommand;
+import com.action.item.AuctionItemInsertCommand;
 import com.action.item.AuctionItemListCommand;
 import com.action.user.UserDeleteCommand;
 import com.action.user.UserListCommand;
@@ -98,6 +99,16 @@ public class AuctionFrontController extends HttpServlet {
 				command = new AuctionItemDeleteCommand();
 				command.execute(request, response);
 				nextPage = "auctionManage.do";
+			}
+			
+			if(com.equals("/auctionItemInsertForm.do")) {
+				nextPage = "auctionItemInsert.jsp";
+			}
+			
+			if(com.equals("/auctionItemInsert.do")) {
+				command = new AuctionItemInsertCommand();
+				command.execute(request, response);
+				nextPage = "auctionList.do";
 			}
 		}
 		

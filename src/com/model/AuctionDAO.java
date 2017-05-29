@@ -34,7 +34,7 @@ public class AuctionDAO {
 		
 		try {
 			con = DriverManager.getConnection(url, userid, passwd);
-			String sql = "SELECT * FROM AUCTION_ITEM";
+			String sql = "SELECT * FROM AUCTION_ITEM ORDER BY AUCTION_ID";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
@@ -48,6 +48,7 @@ public class AuctionDAO {
 				dto.setEnd_date(rs.getString("END_DATE"));
 				dto.setState(rs.getInt("STATE"));
 				dto.setCurrent_bid_amount(rs.getInt("CURRENT_BID_AMOUNT"));
+				dto.setFile_name(rs.getString("FILE_NAME"));
 				
 				list.add(dto);
 			}
@@ -97,4 +98,40 @@ public class AuctionDAO {
 			}
 		}
 	}
+	
+	public void insert(AuctionDTO dto) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = DriverManager.getConnection(url, userid, passwd);
+			String sql = "INSERT INTO AUCTION_ITEM "
+					+ "(AUCTIONEER_ID, ITEM_NAME, START_DATE, END_DATE, CURRENT_BID_AMOUNT, FILE_NAME) values"
+					+ "(?,?,SYSDATE,?,?,?)";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, dto.getAuctioneer_id());
+			pstmt.setString(2, dto.getItem_name());
+			pstmt.setString(3, dto.getEnd_date());
+			pstmt.setInt(4, dto.getCurrent_bid_amount());
+			pstmt.setString(5, dto.getFile_name());
+			
+			rs = pstmt.executeQuery();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
 }
+

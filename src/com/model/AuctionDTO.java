@@ -8,6 +8,14 @@ public class AuctionDTO {
 	private String end_date;
 	private int state;
 	private int current_bid_amount;
+	private String file_name;
+	
+	public String getFile_name() {
+		return file_name;
+	}
+	public void setFile_name(String file_name) {
+		this.file_name = file_name;
+	}
 	public int getAuction_id() {
 		return auction_id;
 	}

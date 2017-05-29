@@ -30,7 +30,7 @@
 	                            ${ auction.item_name }
 	                        </div>
 	                        <div class="panel-body">
-	                            <img width="100%" src="./img/lotto.png">
+	                            <img width="100%" src="./img/${auction.file_name}">
 	                        </div>
 	                        <div class="panel-footer">
 	                           End date: ${ auction.end_date }<br>
