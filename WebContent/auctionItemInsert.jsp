@@ -6,7 +6,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <% request.setCharacterEncoding("UTF-8"); %>
 <%
-	java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	//TODO: minimum date = current date + 1
+	java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd");
 	String today = formatter.format(new java.util.Date());
 	System.out.println("[>>>]"+today);
 %>
@@ -44,7 +45,7 @@
 	            </div>
 				<div class="form-group">
 					<label for="end_date">Choose your End date</label><br>
-					<input type="date" id="end_date" name="end_date" min="2017-04-01" max="2017-04-20" required>
+					<input type="date" id="end_date" name="end_date" min="<%=today %>" max="2017-12-31" required>
 					<input type="button" id="dateTest" onclick="test()" value="show date">
 				</div>
 				<div class="form-group">
